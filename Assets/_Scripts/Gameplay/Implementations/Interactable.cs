@@ -42,9 +42,16 @@ public class Interactable : MonoBehaviour, IInteractable
 
     }
 
+	public bool CanPickupItem()
+	{
+		return _itemIsCurrentlyHeld ? false : true;
+	}
+
     public void Drop()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Interactable#Drop()");
+		_itemIsCurrentlyHeld = false;
+		transform.GetComponent<Rigidbody>().useGravity = true;
     }
 
     public void Pickup(Transform parent)
